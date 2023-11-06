@@ -5,6 +5,7 @@ import command.editor.HtmlDocument;
 import command.editor.UndoCommand;
 import command.fx.Button;
 import iterator.*;
+import mediator.ArticlesDialogBox;
 import observer.Chart;
 import observer.SpreadSheet;
 import observer.ext.DataSource;
@@ -97,5 +98,9 @@ public class App {
         dataSource2.addObserver(stockview);
 
         dataSource2.setValue(22);
+
+        var dialog = new ArticlesDialogBox();
+        dialog.simulateUserInteraction();
+
     }
 }
