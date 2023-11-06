@@ -2,6 +2,8 @@ import iterator.*;
 import state.Canvas;
 import state.SelectionTool;
 import strategy.*;
+import templates.GenerateReportTask;
+import templates.TransferMoneyTask;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -31,5 +33,12 @@ public class App {
 
         var chatClient = new ChatClient();
         chatClient.send("Test message", new AESencryption() );
+
+
+        var task = new TransferMoneyTask();
+        task.execute();
+
+        var task2 = new GenerateReportTask();
+        task2.execute();
     }
 }
