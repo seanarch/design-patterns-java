@@ -1,3 +1,5 @@
+import command.*;
+import command.fx.Button;
 import iterator.*;
 import state.Canvas;
 import state.SelectionTool;
@@ -40,5 +42,16 @@ public class App {
 
         var task2 = new GenerateReportTask();
         task2.execute();
+
+
+        var service = new CustomerService();
+        var command = new AddCustomerCommand(service);
+        var botton = new Button(command);
+        botton.click();
+
+        var composite = new CompositeCommand();
+        composite.add(new ResizeCommand());
+        composite.add(new BlackAndWhite());
+        composite.execute();
     }
 }
