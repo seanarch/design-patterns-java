@@ -6,8 +6,10 @@ import command.editor.UndoCommand;
 import command.fx.Button;
 import iterator.*;
 import observer.Chart;
-import observer.DataSource;
 import observer.SpreadSheet;
+import observer.ext.DataSource;
+import observer.ext.StatusBar;
+import observer.ext.StockListView;
 import state.Canvas;
 import state.SelectionTool;
 import strategy.*;
@@ -76,15 +78,24 @@ public class App {
         undoCommand.execute();
         System.out.println(document.getContent());
 
-        var dataSource = new DataSource();
-        var sheet1 = new SpreadSheet(dataSource);
-        var sheet2 = new SpreadSheet(dataSource);
-        var chart = new Chart(dataSource);
+//        var dataSource = new DataSource();
+//        var sheet1 = new SpreadSheet(dataSource);
+//        var sheet2 = new SpreadSheet(dataSource);
+//        var chart = new Chart(dataSource);
+//
+//        dataSource.addObserver(sheet1);
+//        dataSource.addObserver(sheet2);
+//        dataSource.addObserver(chart);
+//
+//        dataSource.setValue(1);
 
-        dataSource.addObserver(sheet1);
-        dataSource.addObserver(sheet2);
-        dataSource.addObserver(chart);
+        var dataSource2 = new DataSource();
+        var statusbar = new StatusBar(dataSource2);
+        var stockview = new StockListView(dataSource2);
 
-        dataSource.setValue(1);
+        dataSource2.addObserver(statusbar);
+        dataSource2.addObserver(stockview);
+
+        dataSource2.setValue(22);
     }
 }
