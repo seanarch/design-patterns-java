@@ -5,6 +5,9 @@ import command.editor.HtmlDocument;
 import command.editor.UndoCommand;
 import command.fx.Button;
 import iterator.*;
+import observer.Chart;
+import observer.DataSource;
+import observer.SpreadSheet;
 import state.Canvas;
 import state.SelectionTool;
 import strategy.*;
@@ -73,6 +76,15 @@ public class App {
         undoCommand.execute();
         System.out.println(document.getContent());
 
+        var dataSource = new DataSource();
+        var sheet1 = new SpreadSheet();
+        var sheet2 = new SpreadSheet();
+        var chart = new Chart();
 
+        dataSource.addObserver(sheet1);
+        dataSource.addObserver(sheet2);
+        dataSource.addObserver(chart);
+
+        dataSource.setValue(1);
     }
 }
