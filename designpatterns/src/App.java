@@ -99,8 +99,10 @@ public class App {
 
         dataSource2.setValue(22);
 
-        var dialog = new ArticlesDialogBox();
-        dialog.simulateUserInteraction();
+//        var dialog = new ArticlesDialogBox();
+//        dialog.simulateUserInteraction();
+
+
 
     }
 }
