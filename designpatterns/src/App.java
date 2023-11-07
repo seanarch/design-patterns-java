@@ -18,6 +18,8 @@ import state.SelectionTool;
 import strategy.*;
 import templates.GenerateReportTask;
 import templates.TransferMoneyTask;
+import visitor.AnchorNode;
+import visitor.HeadingNode;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -111,5 +113,9 @@ public class App {
         var server = new WebServer(authenticator);
         server.handle(new HttpRequest("admin", "1234"));
 
+        var document1 = new visitor.HtmlDocument();
+        document1.add(new HeadingNode());
+        document1.add(new AnchorNode());
+        document1.highlight();
     }
 }
