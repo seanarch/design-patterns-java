@@ -20,6 +20,7 @@ import templates.GenerateReportTask;
 import templates.TransferMoneyTask;
 import visitor.AnchorNode;
 import visitor.HeadingNode;
+import visitor.HighlightOperation;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -116,6 +117,9 @@ public class App {
         var document1 = new visitor.HtmlDocument();
         document1.add(new HeadingNode());
         document1.add(new AnchorNode());
-        document1.highlight();
+//        document1.highlight();
+
+        document1.execute(new HighlightOperation());
+
     }
 }

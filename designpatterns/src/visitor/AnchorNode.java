@@ -1,8 +1,9 @@
 package visitor;
 
 public class AnchorNode implements HtmlNode{
+
     @Override
-    public void highlight() {
-        System.out.println("Highlight-anchor");
+    public void execute(Operation operation) {
+        operation.apply(this);
     }
 }
