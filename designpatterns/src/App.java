@@ -1,3 +1,5 @@
+import chainOfResponsibility.*;
+import chainOfResponsibility.Compressor;
 import command.*;
 import command.editor.BoldCommand;
 import command.editor.History;
@@ -102,7 +104,12 @@ public class App {
 //        var dialog = new ArticlesDialogBox();
 //        dialog.simulateUserInteraction();
 
-
+        // auth - logger - compressor
+        var compressor = new Compressor(null);
+        var logger = new Logger(compressor);
+        var authenticator = new Authenticator(logger);
+        var server = new WebServer(authenticator);
+        server.handle(new HttpRequest("admin", "1234"));
 
     }
 }
